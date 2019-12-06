@@ -42,6 +42,9 @@
     "i": "^0.3.6",
     "npm": "^6.2.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gulp-v4": "^4.0.0-alpha.5",
+    "natives": "^1.1.6"
+  },
   "description": ""
 }
