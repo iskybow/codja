@@ -8,39 +8,47 @@ mixin logo-and-nav()
       +e('a')(href="#main")
         +e('img')(src='assets/images/logo.svg')
     +e('ul').nav
-      +e('li')
+      +e('li').nav-li
         +e('span')
         +e('a')(href='#main') 01
           +e('span') main
-        +e.line
-          +e('span')
-          +e('span')
-          +e('span')
-      +e('li')
+      +e('li').nav-li.jsShowLine
         +e('span')
         +e('a')(href='#main') 02
           +e('span') services
         +e.line
-          +e('span')
-          +e('span')
-          +e('span')
-      +e('li')
+          +e('span').line-gray.jsAddDelay
+          +e('span').line-white.jsAddDelay
+          +e.line-circle
+            +b('span').jsAddDelay
+            +b('span').jsAddDelay
+      +e('li').nav-li.jsShowLine
         +e('span')
         +e('a')(href='#main') 03
           +e('span') portfolio
         +e.line
-          +e('span')
-          +e('span')
-          +e('span')
-      +e('li')
+          +e('span').line-gray.jsAddDelay
+          +e('span').line-white.jsAddDelay
+          +e.line-circle
+            +b('span').jsAddDelay
+            +b('span').jsAddDelay
+      +e('li').nav-li.jsShowLine
         +e('span')
         +e('a')(href='#main') 04
           +e('span') about as
         +e.line
-          +e('span')
-          +e('span')
-          +e('span')
-      +e('li')
+          +e('span').line-gray.jsAddDelay
+          +e('span').line-white.jsAddDelay
+          +e.line-circle
+            +b('span').jsAddDelay
+            +b('span').jsAddDelay
+      +e('li').nav-li.jsShowLine
         +e('span')
         +e('a')(href='#main') 05
           +e('span') contact us
+        +e.line
+          +e('span').line-gray.jsAddDelay
+          +e('span').line-white.jsAddDelay
+          +e.line-circle
+            +b('span').jsAddDelay
+            +b('span').jsAddDelay

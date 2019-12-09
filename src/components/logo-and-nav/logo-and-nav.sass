@@ -44,11 +44,12 @@
     transform: translateY(-50%)
     z-index: 1000
 
-    & li
+    &-li
       position: relative
       display: flex
       align-items: center
       margin-bottom: 95px
+      cursor: pointer
 
       &:last-child
         margin-bottom: 0
@@ -59,6 +60,7 @@
         margin-right: 15px
         border: 1px solid #FFFFFF
         border-radius: 50%
+        opacity: .4
 
       & a
         color: #ffffff
@@ -74,40 +76,59 @@
 
   &__line
     position: absolute
-    top: 20px
+    bottom: 20px
     left: 5px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
     height: 94px
     width: 1px
     background: transparent
     transition: all ease .5s
-    overflow: hidden
+    overflow-y: hidden
 
-    &:before
-      content: ''
+    &-gray
       position: absolute
       top: 0
-      left: -1px
-      width: 3px
+      left: 0
+      width: 1px
       height: 94px
       background: #5f596c
       z-index: 1
-      transition: all ease .5s
+      transition: all ease .3s
 
-    &:after
-      content: ''
+    &-white
       position: absolute
       top: -94px
-      left: -1px
-      width: 3px
+      left: 0
+      width: 1px
       height: 94px
       background: #ffffff
-      transition: all ease .5s
+      transition: all ease .3s
 
-    &:hover
+    &-circle
+      position: fixed
+      display: flex
+      flex-direction: column
+      justify-content: space-evenly
+      height: 94px
+      z-index: 2
 
-      &:after
-        top: 0
+      & span
+        width: 5px
+        height: 5px
+        background-color: #5f596c
+        border-radius: 50%
+        transition: all ease .3s
 
-      &:before
-        top: 94px
+.active-line
 
+  & .logo-and-nav__line-gray
+    top: 94px
+
+  & .logo-and-nav__line-white
+    top: 0
+
+  & .logo-and-nav__line-circle span
+    background: #ffffff
