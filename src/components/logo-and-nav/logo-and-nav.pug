@@ -1,0 +1,46 @@
+mixin logo-and-nav()
+  +b('aside').logo-and-nav
+    +e.logo
+      +e('button').jsOpenMenu
+        +e('span')
+        +e('span')
+        +e('span')
+      +e('a')(href="#main")
+        +e('img')(src='assets/images/logo.svg')
+    +e('ul').nav
+      +e('li')
+        +e('span')
+        +e('a')(href='#main') 01
+          +e('span') main
+        +e.line
+          +e('span')
+          +e('span')
+          +e('span')
+      +e('li')
+        +e('span')
+        +e('a')(href='#main') 02
+          +e('span') services
+        +e.line
+          +e('span')
+          +e('span')
+          +e('span')
+      +e('li')
+        +e('span')
+        +e('a')(href='#main') 03
+          +e('span') portfolio
+        +e.line
+          +e('span')
+          +e('span')
+          +e('span')
+      +e('li')
+        +e('span')
+        +e('a')(href='#main') 04
+          +e('span') about as
+        +e.line
+          +e('span')
+          +e('span')
+          +e('span')
+      +e('li')
+        +e('span')
+        +e('a')(href='#main') 05
+          +e('span') contact us
