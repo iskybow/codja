@@ -14,71 +14,6 @@ $(function () {
     });
   }
 
-  // let last_scroll = 0;
-  // window.onscroll = function (e) {
-  //   e.preventDefault();
-  //   if (window.scrollY > last_scroll) {
-  //     console.log('down');
-  //     console.log(window.scrollY);
-  //     console.log(last_scroll);
-  //     // let b = $('#services').offset().top;
-  //     // $('html').animate({ scrollTop: b }, 1100);
-  //   } else {
-  //     console.log('up');
-  //     console.log(window.scrollY);
-  //     console.log(last_scroll);
-  //   }
-  //   last_scroll = window.scrollY;
-  // };
-
-  // $('html').bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   return;
-  //   let delta = parseInt(event.originalEvent.wheelDelta || -event.originalEvent.detail);
-  //   if (delta >= 0) {
-  //     console.log('up');
-  //     // let b = $('#services').offset().top;
-  //     // $('html').animate({ scrollTop: b }, 1100);
-  //   } else {
-  //     console.log('down');
-  //   }
-  //
-  // });
-
-  // $('html').bind("mousewheel DOMMouseScroll MozMousePixelScroll", function (e) {
-  //   // e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-  //   if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
-  //     console.log('up');
-  //     let a = $('#main').offset().top;
-  //     $('html').animate({ scrollTop: a }, 1100);
-  //     // e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-  //   }
-  //   else {
-  //     console.log('down');
-  //     let b = $('#services').offset().top;
-  //     $('html').animate({ scrollTop: b }, 1100);
-  //     // e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-  //   }
-  //   // let b = $('#services').offset().top;
-  //   // $('html').animate({ scrollTop: b }, 1100);
-  // });
-
-  $(window).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function (event) {
-    // event.preventDefault();
-
-    console.log(event.originalEvent.wheelDelta);
-    if (event.originalEvent.wheelDelta >= 0) {
-      console.log('Scroll up');
-      // let a = $('#main').offset().top;
-      // $('html').animate({ scrollTop: a });
-    } else {
-      console.log('Scroll down');
-      // let b = $('#services').offset().top;
-      // $('html').animate({ scrollTop: b });
-    }
-  });
-
   //line hide reverse
   function lineShowReverse(self) {
     let allLine = $(self).prevAll();
@@ -119,6 +54,44 @@ $(function () {
         break;
     }
   }
+
+  // scroll
+  $('body section, body aside').bind('mousewheel DOMMouseScroll MozMousePixelScroll', function (e) {
+    e.preventDefault();
+
+    if (e.originalEvent.wheelDelta >= 0) {
+      let targetSectionPrev = $(this).prev()[0].tagName;
+      if (targetSectionPrev == 'SECTION') {
+        // $('.jsShowLine').removeClass('active-line');
+        let targetSectionPrevSection = $(this).prev();
+        let targetSectionPrevSectionId = targetSectionPrevSection.attr('id');
+        let targetSectionPrevSectionTop = targetSectionPrevSection.offset().top;
+        $('html').animate({scrollTop: targetSectionPrevSectionTop}, {duration: 650, easing: 'swing', queue: false});
+      } else {
+        return;
+      }
+    } else {
+      let targetSectionNext = $(this).next()[0].tagName;
+      if (targetSectionNext == 'SECTION') {
+        $('.jsShowLine').removeClass('active-line');
+        let targetSectionNextSection = $(this).next();
+        let targetSectionNextSectionId = targetSectionNextSection.attr('id');
+        let navLink = $('.jsShowLine').find('a');
+        navLink.each(function (index) {
+          if ($(this)[0].hash == '#'+targetSectionNextSectionId) {
+            $('.jsAddDelay').css({'transition-delay': '0'});
+            $(this).closest('li').prevAll().addClass('active-line');
+            $(this).closest('li').addClass('active-line');
+          }
+        });
+        console.log(navLink);
+        let targetSectionNextSectionTop = targetSectionNextSection.offset().top;
+        $('html').animate({scrollTop: targetSectionNextSectionTop}, {duration: 650, easing: 'swing', queue: false});
+      } else {
+        return;
+      }
+    }
+  });
 
   //line set delay
   lineShow();
