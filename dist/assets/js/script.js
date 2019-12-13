@@ -65,31 +65,39 @@ $(function () {
     if (e.originalEvent.wheelDelta >= 0) {
       var targetSectionPrev = $(this).prev()[0].tagName;
       if (targetSectionPrev == 'SECTION') {
-        // $('.jsShowLine').removeClass('active-line');
-        var targetSectionPrevSection = $(this).prev();
-        var targetSectionPrevSectionId = targetSectionPrevSection.attr('id');
-        var targetSectionPrevSectionTop = targetSectionPrevSection.offset().top;
-        $('html').animate({ scrollTop: targetSectionPrevSectionTop }, { duration: 650, easing: 'swing', queue: false });
+
+        $('.jsShowLine').removeClass('active-line').removeClass('show-title');
+        var _targetSectionPrev = $(this).prev();
+        var targetSectionPrevId = _targetSectionPrev.attr('id');
+        var navLink = $('.jsShowLine').find('a');
+        $('.jsAddDelay').css({ 'transition-delay': '0s' });
+        navLink.each(function (index) {
+          if ($(this)[0].hash == '#' + targetSectionPrevId) {
+            $(this).closest('li').prevAll().addClass('active-line');
+            $(this).closest('li').addClass('active-line').addClass('show-title');
+          }
+        });
+        var targetSectionPrevTop = _targetSectionPrev.offset().top;
+        $('html').animate({ scrollTop: targetSectionPrevTop }, { duration: 650, easing: 'swing', queue: false });
       } else {
         return;
       }
     } else {
       var targetSectionNext = $(this).next()[0].tagName;
       if (targetSectionNext == 'SECTION') {
-        $('.jsShowLine').removeClass('active-line');
-        var targetSectionNextSection = $(this).next();
-        var targetSectionNextSectionId = targetSectionNextSection.attr('id');
-        var navLink = $('.jsShowLine').find('a');
-        navLink.each(function (index) {
-          if ($(this)[0].hash == '#' + targetSectionNextSectionId) {
-            $('.jsAddDelay').css({ 'transition-delay': '0' });
+        $('.jsShowLine').removeClass('active-line').removeClass('show-title');
+        var _targetSectionNext = $(this).next();
+        var targetSectionNextId = _targetSectionNext.attr('id');
+        var _navLink = $('.jsShowLine').find('a');
+        $('.jsAddDelay').css({ 'transition-delay': '0s' });
+        _navLink.each(function (index) {
+          if ($(this)[0].hash == '#' + targetSectionNextId) {
             $(this).closest('li').prevAll().addClass('active-line');
-            $(this).closest('li').addClass('active-line');
+            $(this).closest('li').addClass('active-line').addClass('show-title');
           }
         });
-        console.log(navLink);
-        var targetSectionNextSectionTop = targetSectionNextSection.offset().top;
-        $('html').animate({ scrollTop: targetSectionNextSectionTop }, { duration: 650, easing: 'swing', queue: false });
+        var targetSectionNextTop = _targetSectionNext.offset().top;
+        $('html').animate({ scrollTop: targetSectionNextTop }, { duration: 650, easing: 'swing', queue: false });
       } else {
         return;
       }
@@ -99,18 +107,80 @@ $(function () {
   //line set delay
   lineShow();
 
-  //show line
+  //load page set section lines
+  function onEntry(entry) {
+    $(entry).each(function () {
+      if ($(this)[0].intersectionRatio > 0) {
+        $(this)[0].target.classList.add('visible');
+        $('.jsShowLine').removeClass('active-line').removeClass('show-title');
+        var targetSection = $(this)[0].target;
+        var targetSectionId = targetSection.id;
+        var navLink = $('.jsShowLine').find('a');
+        $('.jsAddDelay').css({ 'transition-delay': '0s' });
+        navLink.each(function (index) {
+          if ($(this)[0].hash == '#' + targetSectionId) {
+            $(this).closest('li').prevAll().addClass('active-line');
+            $(this).closest('li').addClass('active-line').addClass('show-title');
+          }
+        });
+        var targetSectionTop = targetSection.offsetTop;
+        $('html').animate({ scrollTop: targetSectionTop }, { duration: 650, easing: 'swing', queue: false });
+      }
+    });
+  }
+
+  var options = {};
+
+  var observer = new IntersectionObserver(onEntry, options);
+
+  var elements = document.querySelectorAll('section');
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = elements[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var elm = _step.value;
+
+      observer.observe(elm);
+    }
+
+    //show line
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
   $('.jsShowLine').mouseenter(function () {
     lineShow();
-    $(this).addClass('active-line');
+    $(this).addClass('active-line').addClass('show-title');
     $(this).prevAll().addClass('active-line');
   });
 
+  function reverseLine(elem) {
+    if (!$(elem).prev().hasClass('show-title')) {
+
+      // reverseLine()
+    }
+  }
+
   //hide line
   $('.jsShowLine').mouseleave(function () {
-    lineShowReverse(this);
-    $(this).removeClass('active-line');
-    $(this).prevAll().removeClass('active-line');
+    reverseLine(this);
+    // lineShowReverse(this);
+    // $(this).removeClass('active-line').removeClass('show-title');
+    // $(this).prevAll().removeClass('active-line');
   });
 });
 //# sourceMappingURL=script.js.map
