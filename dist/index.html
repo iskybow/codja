@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Index Page</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Roboto:300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet">
     <link href="assets/libs/normalize.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
   </head>
@@ -13,30 +14,40 @@
     <aside class="logo-and-nav">
       <div class="logo-and-nav__logo">
         <button class="logo-and-nav__jsOpenMenu"><span></span><span></span><span></span>
-        </button><a href="#main"><img src="assets/images/logo.svg" alt="" role="presentation"/></a>
+        </button><span class="jsAnimTo" name="main"><img src="assets/images/logo.svg" alt="" role="presentation"/></span>
       </div>
       <ul class="logo-and-nav__nav">
-        <li class="logo-and-nav__nav-li"><span></span><a href="#main">01<span>main</span></a>
+        <li class="logo-and-nav__nav-li jsShowLine jsAnimTo" name="main"><span></span>
+          <p>01<span>main</span>
+          </p>
         </li>
-        <li class="logo-and-nav__nav-li jsShowLine"><span></span><a href="#services">02<span>services</span></a>
+        <li class="logo-and-nav__nav-li jsShowLine jsAnimTo" name="services"><span></span>
+          <p>02<span>services</span>
+          </p>
           <div class="logo-and-nav__line"><span class="logo-and-nav__line-gray jsAddDelay"></span><span class="logo-and-nav__line-white jsAddDelay"></span>
             <div class="logo-and-nav__line-circle"><span class="jsAddDelay"></span><span class="jsAddDelay"></span>
             </div>
           </div>
         </li>
-        <li class="logo-and-nav__nav-li jsShowLine"><span></span><a href="#qwe">03<span>portfolio</span></a>
+        <li class="logo-and-nav__nav-li jsShowLine jsAnimTo" name="portfolio"><span></span>
+          <p>03<span>portfolio</span>
+          </p>
           <div class="logo-and-nav__line"><span class="logo-and-nav__line-gray jsAddDelay"></span><span class="logo-and-nav__line-white jsAddDelay"></span>
             <div class="logo-and-nav__line-circle"><span class="jsAddDelay"></span><span class="jsAddDelay"></span>
             </div>
           </div>
         </li>
-        <li class="logo-and-nav__nav-li jsShowLine"><span></span><a href="#qwer">04<span>about as</span></a>
+        <li class="logo-and-nav__nav-li jsShowLine jsAnimTo" name="qwer"><span></span>
+          <p>04<span>about as</span>
+          </p>
           <div class="logo-and-nav__line"><span class="logo-and-nav__line-gray jsAddDelay"></span><span class="logo-and-nav__line-white jsAddDelay"></span>
             <div class="logo-and-nav__line-circle"><span class="jsAddDelay"></span><span class="jsAddDelay"></span>
             </div>
           </div>
         </li>
-        <li class="logo-and-nav__nav-li jsShowLine"><span></span><a href="#qwert">05<span>contact us</span></a>
+        <li class="logo-and-nav__nav-li jsShowLine jsAnimTo" name="qwert"><span></span>
+          <p>05<span>contact us</span>
+          </p>
           <div class="logo-and-nav__line"><span class="logo-and-nav__line-gray jsAddDelay"></span><span class="logo-and-nav__line-white jsAddDelay"></span>
             <div class="logo-and-nav__line-circle"><span class="jsAddDelay"></span><span class="jsAddDelay"></span>
             </div>
@@ -50,115 +61,54 @@
       <div class="main-section__text">
         <p>Turning Imagination Into Creation
         </p>
-        <button>Our works
+        <button class="btn">Our works
         </button>
       </div>
     </section>
     <section class="services" id="services">
-      <div class="services-item"><span class="services-item__num">01</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>Design
-          </h4>
-          <p>Have your visitors entertained with a unique UI design and interactive UX for your website
-          </p>
+      <div class="services-item"><span class="services-item__num">01</span>
+        <div class="services-item__block"><img src="assets/images/icon1.png" alt="" role="presentation"/>
+          <div class="services-item__text">
+            <h4>Design
+            </h4>
+            <p>Have your visitors entertained with a unique UI design and interactive UX for your website
+            </p>
+          </div>
         </div>
       </div>
-      <div class="services-item"><span class="services-item__num">02</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>programming
-          </h4>
-          <p>Build up your own customized website with a strong, stable techniques and bug-free codes
-          </p>
+      <div class="services-item"><span class="services-item__num">02</span>
+        <div class="services-item__block"><img src="assets/images/icon2.png" alt="" role="presentation"/>
+          <div class="services-item__text">
+            <h4>programming
+            </h4>
+            <p>Build up your own customized website with a strong, stable techniques and bug-free codes
+            </p>
+          </div>
         </div>
       </div>
-      <div class="services-item"><span class="services-item__num">03</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>MAINTENANCE
-          </h4>
-          <p>Ensure the reliability, stability and the successful growth of your business.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="services" id="qwe">
-      <div class="services-item"><span class="services-item__num">01</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>Design
-          </h4>
-          <p>Have your visitors entertained with a unique UI design and interactive UX for your website
-          </p>
-        </div>
-      </div>
-      <div class="services-item"><span class="services-item__num">02</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>programming
-          </h4>
-          <p>Build up your own customized website with a strong, stable techniques and bug-free codes
-          </p>
-        </div>
-      </div>
-      <div class="services-item"><span class="services-item__num">03</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>MAINTENANCE
-          </h4>
-          <p>Ensure the reliability, stability and the successful growth of your business.
-          </p>
+      <div class="services-item"><span class="services-item__num">03</span>
+        <div class="services-item__block"><img src="assets/images/icon3.png" alt="" role="presentation"/>
+          <div class="services-item__text">
+            <h4>MAINTENANCE
+            </h4>
+            <p>Ensure the reliability, stability and the successful growth of your business.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-    <section class="services" id="qwer">
-      <div class="services-item"><span class="services-item__num">01</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>Design
-          </h4>
-          <p>Have your visitors entertained with a unique UI design and interactive UX for your website
-          </p>
-        </div>
-      </div>
-      <div class="services-item"><span class="services-item__num">02</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>programming
-          </h4>
-          <p>Build up your own customized website with a strong, stable techniques and bug-free codes
-          </p>
-        </div>
-      </div>
-      <div class="services-item"><span class="services-item__num">03</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>MAINTENANCE
-          </h4>
-          <p>Ensure the reliability, stability and the successful growth of your business.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="services" id="qwert">
-      <div class="services-item"><span class="services-item__num">01</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>Design
-          </h4>
-          <p>Have your visitors entertained with a unique UI design and interactive UX for your website
-          </p>
-        </div>
-      </div>
-      <div class="services-item"><span class="services-item__num">02</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>programming
-          </h4>
-          <p>Build up your own customized website with a strong, stable techniques and bug-free codes
-          </p>
-        </div>
-      </div>
-      <div class="services-item"><span class="services-item__num">03</span><img src="assets/images" alt="" role="presentation"/>
-        <div class="services-item__text">
-          <h4>MAINTENANCE
-          </h4>
-          <p>Ensure the reliability, stability and the successful growth of your business.
-          </p>
-        </div>
+    <section class="portfolio" id="portfolio"><img class="portfolio__comet1" src="assets/images/comet-1.png" alt="" role="presentation"/><img class="portfolio__comet2" src="assets/images/comet-2.png" alt="" role="presentation"/><img class="portfolio__comet3" src="assets/images/comet-3.png" alt="" role="presentation"/>
+      <div class="portfolio__text">
+        <p>connecteam
+        </p>
+        <p>UX/UI Design, Programming
+        </p><span>Antique Motor Cars Website - prominent antique car <br> re-seller in tri-state area.</span>
+        <button class="btn">View project
+        </button>
       </div>
     </section>
     <script src="assets/libs/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="assets/libs/anim.js"></script>
     <script src="assets/js/script.js"></script>
   </body>

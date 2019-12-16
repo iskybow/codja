@@ -1,0 +1,59 @@
+.portfolio
+  position: relative
+  display: flex
+  align-items: center
+  width: 100vw
+  height: 100vh
+  max-height: 100vh
+  padding-left: 390px
+  z-index: 1
+
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: url(../images/beckground-portfolio.png) no-repeat 50% 50%
+    z-index: 2
+
+  &__comet1
+    position: absolute
+    top: 150px
+    left: 350px
+    z-index: 2
+
+  &__comet2
+    position: absolute
+    top: 60px
+    left: 750px
+    z-index: 2
+
+  &__comet3
+    position: absolute
+    top: 245px
+    left: 695px
+    z-index: 2
+
+  &__text
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    z-index: 5
+
+    & p
+      margin: 40px 0 20px
+      color: #FFFFFF
+      font-family: 'Montserrat', sans-serif
+      font-size: 30px
+      font-weight: bold
+
+    & span
+      margin-bottom: 40px
+      color: #FFFFFF
+      font-family: 'Roboto', sans-serif
+      font-size: 18px
+      font-weight: 300
+      line-height: 1.4
