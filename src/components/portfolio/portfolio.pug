@@ -8,3 +8,13 @@ mixin portfolio()
       +e('p') UX/UI Design, Programming
       +e('span') Antique Motor Cars Website - prominent antique car <br> re-seller in tri-state area.
       +b('button').btn View project
+    +b.slider
+      +b('button').next next
+      +e('ul').list
+        +e('li').slide
+          +e('img')(src='assets/images/portfolio-slide.png')
+        +e('li').slide
+          +e('img')(src='assets/images/portfolio-slide.png')
+        +e('li').slide
+          +e('img')(src='assets/images/portfolio-slide.png')
+      +e.dots

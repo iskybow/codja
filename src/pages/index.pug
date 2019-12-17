@@ -3,6 +3,8 @@ include ../components/main-section/main-section
 include ../components/logo-and-nav/logo-and-nav
 include ../components/services/services
 include ../components/portfolio/portfolio
+include ../components/about-us/about-us
+include ../components/contact-us/contact-us
 
 block head
     - var pageTitle = 'Index Page';
@@ -12,3 +14,5 @@ block content
   +main-section()
   +services()
   +portfolio()
+  +about-us()
+  +contact-us()

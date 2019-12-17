@@ -155,6 +155,18 @@ $(function () {
     $('html').animate({scrollTop: linkSectionPosition}, {duration: 650, easing: 'swing', queue: false});
   });
 
-  $('.your-class').slick();
+  var $card = $('.slider__slide');
+  var lastCard = $(".slider__slide").length - 1;
+
+  $('.next').click(function(){
+    var prependList = function() {
+      if( $('.slider__slide').hasClass('activeNow') ) {
+        var $slicedCard = $('.slider__slide').slice(lastCard).removeClass('transformThis activeNow');
+        $('ul').prepend($slicedCard);
+      }
+    };
+    $('li').last().removeClass('transformPrev').addClass('transformThis').prev().addClass('activeNow');
+    setTimeout(function(){prependList(); }, 150);
+  });
 
 });

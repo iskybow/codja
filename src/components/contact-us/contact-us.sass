@@ -1,0 +1,89 @@
+.contact-us
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100vw
+  height: 100vh
+  max-height: 100vh
+  z-index: 1
+
+  &__bg
+    position: absolute
+    top: 0
+    right: 0
+    height: 100%
+    z-index: 2
+
+  &__block
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    & h2
+      margin: 0 0 50px
+      color: #FFFFFF
+      font-family: 'Montserrat', sans-serif
+      font-size: 68px
+      font-weight: bold
+
+  &__bottom
+    position: absolute
+    bottom: 40px
+    left: 50px
+    display: flex
+    align-items: center
+
+    & > span
+      margin-right: 10px
+      color: #FFFFFF
+      font-family: 'Montserrat', sans-serif
+      font-size: 18px
+
+  &__facebook
+    position: relative
+    display: flex
+    padding: 5px 6px 1px
+    color: #FFFFFF
+    font-family: 'Montserrat', sans-serif
+    font-size: 16px
+    font-weight: bold
+    line-height: 1.4
+    text-shadow: 0 -2px 0 NaNpx rgba(59,79,131,0.5)
+    border-radius: 5px
+    border: 2px solid #3D528C
+    background: linear-gradient(270deg, #4F68A7 0%, #3F599E 100%)
+    outline: none
+    cursor: pointer
+
+    & svg
+      margin-right: 10px
+      background: transparent
+
+      & path
+        fill: #ffffff
+
+  &__count
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 29px
+    margin-left: 10px
+    padding: 0 5px
+    border: 1px solid #B8BCC2
+    border-radius: 5px
+    background: #ffffff
+
+    &:before
+      content: ''
+      position: absolute
+      left: -13px
+      border: 6px solid transparent
+      border-right: 7px solid #ffffff
+
+    & span
+      color: #495664
+      font-family: 'Montserrat', sans-serif
+      font-size: 16px
+      line-height: 1.4
