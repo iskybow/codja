@@ -155,18 +155,30 @@ $(function () {
     $('html').animate({scrollTop: linkSectionPosition}, {duration: 650, easing: 'swing', queue: false});
   });
 
-  var $card = $('.slider__slide');
-  var lastCard = $(".slider__slide").length - 1;
+
+  let $card = $('.slider__slide');
+  let lastCard = $(".slider__list .slider__slide").length - 1;
 
   $('.next').click(function(){
-    var prependList = function() {
+    let prependList = function() {
       if( $('.slider__slide').hasClass('activeNow') ) {
-        var $slicedCard = $('.slider__slide').slice(lastCard).removeClass('transformThis activeNow');
-        $('ul').prepend($slicedCard);
+        let $slicedCard = $('.slider__slide').slice(0).removeClass('transformThis activeNow');
+        $('.slider__list').prepend($slicedCard);
       }
     };
-    $('li').last().removeClass('transformPrev').addClass('transformThis').prev().addClass('activeNow');
+    $('.slider__slide').first().removeClass('transformPrev').addClass('transformThis').next().addClass('activeNow');
     setTimeout(function(){prependList(); }, 150);
+  });
+
+  $('.prev').click(function() {
+    let appendToList = function() {
+      if( $('.slider__slide').hasClass('activeNow') ) {
+        let $slicedCard = $('.slider__slide').slice(0, 1).addClass('transformPrev');
+        $('.slider__list').append($slicedCard);
+      }};
+
+    $('.slider__slide').removeClass('transformPrev').first().addClass('activeNow').nextAll().removeClass('activeNow');
+    setTimeout(function(){appendToList();}, 150);
   });
 
 });

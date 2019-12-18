@@ -62,11 +62,11 @@
       line-height: 1.4
 
 .slider
-  width: 500px
-  height: 250px
+  width: 940px
+  height: 700px
   position: absolute
-  top: 0
-  right: 0
+  top: 100px
+  right: 20px
   margin: 20px auto
   z-index: 1000
 
@@ -105,7 +105,7 @@
     background: #fff
 
   &__list
-    width: 300px
+    width: 940px
 
     img
       width: 100%
@@ -118,8 +118,7 @@
       border-radius: 10px
       position: absolute
       list-style: none
-      height: 300px
-      left: 0
+      width: 940px
       right: 0
       margin: 0 auto
       padding-top: 20px
@@ -127,26 +126,22 @@
       box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.5)
 
       &:nth-child(1)
-        top: (12px *2)
-        width: 100% -10% *4
-      /* animation: scaleCard 100ms; */
-
+        top: 0
+        right: 0
+        height: 100%
+        z-index: 3
 
       &:nth-child(2)
-        top: (12px *3)
-        width: 100% -10% *3
+        top: 24px
+        right: 25px
+        height: calc(100% - 48px)
+        z-index: 2
 
       &:nth-child(3)
-        top: (12px *4)
-        width: 100% -10% *2
-
-      &:nth-child(4)
-        top: (12px *5)
-        width: 100% -10% *1
-
-      &:nth-child(5)
-        top: (12px *6)
-        width: 100% -10% *0
+        top: 48px
+        right: 50px
+        height: calc(100% - 96px)
+        z-index: 1
 
   &:hover
     .prev
