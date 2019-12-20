@@ -5,6 +5,8 @@ include ../components/services/services
 include ../components/portfolio/portfolio
 include ../components/about-us/about-us
 include ../components/contact-us/contact-us
+include ../components/menu/menu
+include ../components/contacts-modal/contacts-modal
 
 block head
     - var pageTitle = 'Index Page';
@@ -16,3 +18,5 @@ block content
   +portfolio()
   +about-us()
   +contact-us()
+  +menu()
+  +contacts-modal()

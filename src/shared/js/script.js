@@ -155,30 +155,63 @@ $(function () {
     $('html').animate({scrollTop: linkSectionPosition}, {duration: 650, easing: 'swing', queue: false});
   });
 
-
-  let $card = $('.slider__slide');
-  let lastCard = $(".slider__list .slider__slide").length - 1;
-
+  //portfolio slider
+  //next slide
   $('.next').click(function(){
     let prependList = function() {
       if( $('.slider__slide').hasClass('activeNow') ) {
-        let $slicedCard = $('.slider__slide').slice(0).removeClass('transformThis activeNow');
-        $('.slider__list').prepend($slicedCard);
+        let $slicedCard = $('.slider__slide').slice(0, 1).removeClass('transformThis').removeClass('activeNow');
+        $('.slider__list').append($slicedCard);
       }
     };
     $('.slider__slide').first().removeClass('transformPrev').addClass('transformThis').next().addClass('activeNow');
-    setTimeout(function(){prependList(); }, 150);
+    setTimeout(function(){prependList(); }, 300);
   });
 
+  //prev slide
+  let lastCard = $(".slider__slide").length - 1;
   $('.prev').click(function() {
     let appendToList = function() {
       if( $('.slider__slide').hasClass('activeNow') ) {
-        let $slicedCard = $('.slider__slide').slice(0, 1).addClass('transformPrev');
-        $('.slider__list').append($slicedCard);
+        let $slicedCard = $('.slider__slide').slice(lastCard).addClass('transformPrev');
+        $('.slider__list').prepend($slicedCard);
       }};
 
     $('.slider__slide').removeClass('transformPrev').first().addClass('activeNow').nextAll().removeClass('activeNow');
     setTimeout(function(){appendToList();}, 150);
+  });
+
+  //dots slider
+  function dotsSlider() {
+    let allSlide = $('.slider__slide');
+    let dotsListBlock = $('.slider__dots')[0];
+    allSlide.each(function (index) {
+      let html = '<li class="jsDotsSlide" id="'+index+'"><button></button></li>';
+      $(dotsListBlock).append(html);
+    });
+    $('.slider__dots li').first().addClass('dot-active');
+  }
+  dotsSlider();
+
+  $('.jsDotsSlide').click(function () {
+    let indexSlide = $(this).attr('id');
+    let currentIndex = $('.dot-active').attr('id');
+    if (indexSlide > currentIndex) {
+      for (let i = 0; i < indexSlide; i++) {
+        $('.next').click();
+        $('.jsDotsSlide').removeClass('dot-active');
+        $(this).addClass('dot-active');
+      }
+    } else {
+
+      for (let i = currentIndex; i > indexSlide; i--) {
+        $('.prev').click();
+        $('.jsDotsSlide').removeClass('dot-active');
+        $(this).addClass('dot-active');
+      }
+    }
+
+    console.log(indexSlide);
   });
 
 });

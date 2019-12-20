@@ -176,27 +176,28 @@ $(function () {
     $('html').animate({ scrollTop: linkSectionPosition }, { duration: 650, easing: 'swing', queue: false });
   });
 
-  var $card = $('.slider__slide');
-  var lastCard = $(".slider__list .slider__slide").length - 1;
-
+  //portfolio slider
+  //next slide
   $('.next').click(function () {
     var prependList = function prependList() {
       if ($('.slider__slide').hasClass('activeNow')) {
-        var $slicedCard = $('.slider__slide').slice(0).removeClass('transformThis activeNow');
-        $('.slider__list').prepend($slicedCard);
+        var $slicedCard = $('.slider__slide').slice(0, 1).removeClass('transformThis').removeClass('activeNow');
+        $('.slider__list').append($slicedCard);
       }
     };
     $('.slider__slide').first().removeClass('transformPrev').addClass('transformThis').next().addClass('activeNow');
     setTimeout(function () {
       prependList();
-    }, 150);
+    }, 300);
   });
 
+  //prev slide
+  var lastCard = $(".slider__slide").length - 1;
   $('.prev').click(function () {
     var appendToList = function appendToList() {
       if ($('.slider__slide').hasClass('activeNow')) {
-        var $slicedCard = $('.slider__slide').slice(0, 1).addClass('transformPrev');
-        $('.slider__list').append($slicedCard);
+        var $slicedCard = $('.slider__slide').slice(lastCard).addClass('transformPrev');
+        $('.slider__list').prepend($slicedCard);
       }
     };
 
@@ -204,6 +205,39 @@ $(function () {
     setTimeout(function () {
       appendToList();
     }, 150);
+  });
+
+  //dots slider
+  function dotsSlider() {
+    var allSlide = $('.slider__slide');
+    var dotsListBlock = $('.slider__dots')[0];
+    allSlide.each(function (index) {
+      var html = '<li class="jsDotsSlide" id="' + index + '"><button></button></li>';
+      $(dotsListBlock).append(html);
+    });
+    $('.slider__dots li').first().addClass('dot-active');
+  }
+  dotsSlider();
+
+  $('.jsDotsSlide').click(function () {
+    var indexSlide = $(this).attr('id');
+    var currentIndex = $('.dot-active').attr('id');
+    if (indexSlide > currentIndex) {
+      for (var i = 0; i < indexSlide; i++) {
+        $('.next').click();
+        $('.jsDotsSlide').removeClass('dot-active');
+        $(this).addClass('dot-active');
+      }
+    } else {
+
+      for (var _i = currentIndex; _i > indexSlide; _i--) {
+        $('.prev').click();
+        $('.jsDotsSlide').removeClass('dot-active');
+        $(this).addClass('dot-active');
+      }
+    }
+
+    console.log(indexSlide);
   });
 });
 //# sourceMappingURL=script.js.map
