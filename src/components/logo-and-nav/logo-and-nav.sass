@@ -21,6 +21,30 @@
       outline: none
       cursor: pointer
 
+      &.menu-active
+        justify-content: center
+        width: 41px
+        height: 41px
+        margin-right: 21px
+        border: 1px solid #FFFFFF
+        border-radius: 50%
+
+        & span
+          position: absolute
+          width: 20px
+          height: 2px
+          margin: 0
+          border-radius: 25px
+
+          &:first-child
+            transform: rotate(45deg)
+
+          &:nth-child(2)
+            display: none
+
+          &:last-child
+            transform: rotate(-45deg)
+
       & span
         height: 4px
         width: 4px
@@ -28,7 +52,7 @@
         background-color: #FFFFFF
         border-radius: 50%
 
-    & span
+    & > span
       font-size: 42px
       color: #ffffff
       cursor: pointer

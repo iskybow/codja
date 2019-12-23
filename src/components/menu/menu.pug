@@ -1,15 +1,24 @@
 mixin menu()
-  +b.menu
-    +e('ul')
-      +e('li')(name ='services')
+  +b.menu.jsShowMenu
+    +e('ul').nav
+      +b('li')(name ='services').jsAnimTo
         +e('span') 01
         +e('p') SERVICES
-      +e('li')(name ='portfolio')
+      +b('li')(name ='portfolio').jsAnimTo
         +e('span') 02
         +e('p') PORTFOLIO
-      +e('li')(name ='about-us')
+      +b('li')(name ='about-us').jsAnimTo
         +e('span') 03
         +e('p') ABOUT US
-      +e('li')(name ='contact-us')
+      +b('li')(name ='contact-us').jsAnimTo
         +e('span') 04
         +e('p') CONTACT US
+    +e('ul').soc
+      +e('li')
+        +e('a')(href='#') Instagram
+      +e('li')
+        +e('a')(href='#') Facebook
+      +e('li')
+        +e('a')(href='#') Youtube
+      +e('li')
+        +e('a')(href='#') Linkedin

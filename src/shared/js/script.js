@@ -15,14 +15,11 @@ $(function () {
   }
 
   // scroll
-  $('body section, body aside').bind('mousewheel', function (e) {
+  $('body section, body aside').bind('mousewheel DOMMouseScroll MozMousePixelScroll scroll', function (e) {
     e.preventDefault();
-
     if (e.originalEvent.wheelDelta >= 0) {
       let targetSectionPrev = $(this).prev()[0].tagName;
       if (targetSectionPrev == 'SECTION') {
-
-
         $('.jsShowLine').removeClass('active-line show-title current-elem');
         let targetSectionPrev = $(this).prev();
         let targetSectionPrevId = targetSectionPrev.attr('id');
@@ -48,7 +45,7 @@ $(function () {
         let targetSectionNextId = targetSectionNext.attr('id');
         let navLink = $('.jsShowLine');
         $('.jsAddDelay').css({'transition-delay': '0s'});
-        navLink.each(function (index) {
+        $(navLink).each(function (index) {
           if ($(this).attr('name') == targetSectionNextId) {
             $(this).closest('li').prevAll().addClass('active-line');
             $(this).closest('li').addClass('active-line show-title current-elem');
@@ -67,28 +64,30 @@ $(function () {
 
   //load page set section lines
   let clickFlag = false;
+
   function onEntry(entry) {
-      $(entry).each(function () {
-        if ($(this)[0].intersectionRatio > 0) {
-          $(this)[0].target.classList.add('visible');
-          $('.jsShowLine').removeClass('active-line show-title current-elem');
-          let targetSection = $(this)[0].target;
-          let targetSectionId = targetSection.id;
-          let navLink = $('.jsShowLine');
-          $('.jsAddDelay').css({'transition-delay': '0s'});
-          navLink.each(function (index) {
-            if ($(this).attr('name') == targetSectionId) {
-              $(this).closest('li').prevAll().addClass('active-line');
-              $(this).closest('li').addClass('active-line show-title current-elem');
-            }
-          });
-          if (clickFlag != true) {
+    $(entry).each(function () {
+      if ($(this)[0].intersectionRatio > 0) {
+        $('section').removeClass('visible');
+        $(this)[0].target.classList.add('visible');
+        $('.jsShowLine').removeClass('active-line show-title current-elem');
+        let targetSection = $(this)[0].target;
+        let targetSectionId = targetSection.id;
+        let navLink = $('.jsShowLine');
+        $('.jsAddDelay').css({'transition-delay': '0s'});
+        $(navLink).each(function (index) {
+          if ($(this).attr('name') == targetSectionId) {
+            $(this).closest('li').prevAll().addClass('active-line');
+            $(this).closest('li').addClass('active-line show-title current-elem');
+          }
+        });
+        if (clickFlag != true) {
           let targetSectionTop = targetSection.offsetTop;
           $('html').animate({scrollTop: targetSectionTop}, {duration: 650, easing: 'swing', queue: false});
-            clickFlag = false;
-          }
+          clickFlag = false;
         }
-      });
+      }
+    });
   }
 
   let options = {};
@@ -151,34 +150,60 @@ $(function () {
     clickFlag = true;
     let linkHash = $(this).attr('name');
     let linkSection = $('#' + linkHash);
+    $('.jsShowLine').removeClass('active-line show-title current-elem');
+    let navLink = $('.jsShowLine');
+    $('.jsAddDelay').css({'transition-delay': '0s'});
+    $(navLink).each(function (index) {
+      if ($(this).attr('name') == linkHash) {
+        $(this).closest('li').prevAll().addClass('active-line');
+        $(this).closest('li').addClass('active-line show-title current-elem');
+      }
+    });
+
     let linkSectionPosition = $(linkSection)[0].offsetTop;
     $('html').animate({scrollTop: linkSectionPosition}, {duration: 650, easing: 'swing', queue: false});
+    if ($('.jsShowMenu').hasClass('menu-open')) {
+      $('.jsOpenMenu').removeClass('menu-active');
+      $('.jsShowMenu').removeClass('menu-open').animate({top: '-100%'}, {duration: 800, easing: 'swing', queue: false});
+    } else if ($('.jsShowContactsModal').hasClass('contacts-open')) {
+      $('.jsOpenContactsModal').removeClass('contacts-active');
+      $('.jsShowContactsModal').removeClass('contacts-open').animate({top: '100%'}, {
+        duration: 800,
+        easing: 'swing',
+        queue: false
+      });
+    }
   });
 
   //portfolio slider
   //next slide
-  $('.next').click(function(){
-    let prependList = function() {
-      if( $('.slider__slide').hasClass('activeNow') ) {
+  $('.next').click(function () {
+    let prependList = function () {
+      if ($('.slider__slide').hasClass('activeNow')) {
         let $slicedCard = $('.slider__slide').slice(0, 1).removeClass('transformThis').removeClass('activeNow');
         $('.slider__list').append($slicedCard);
       }
     };
     $('.slider__slide').first().removeClass('transformPrev').addClass('transformThis').next().addClass('activeNow');
-    setTimeout(function(){prependList(); }, 300);
+    setTimeout(function () {
+      prependList();
+    }, 300);
   });
 
   //prev slide
   let lastCard = $(".slider__slide").length - 1;
-  $('.prev').click(function() {
-    let appendToList = function() {
-      if( $('.slider__slide').hasClass('activeNow') ) {
+  $('.prev').click(function () {
+    let appendToList = function () {
+      if ($('.slider__slide').hasClass('activeNow')) {
         let $slicedCard = $('.slider__slide').slice(lastCard).addClass('transformPrev');
         $('.slider__list').prepend($slicedCard);
-      }};
+      }
+    };
 
     $('.slider__slide').removeClass('transformPrev').first().addClass('activeNow').nextAll().removeClass('activeNow');
-    setTimeout(function(){appendToList();}, 150);
+    setTimeout(function () {
+      appendToList();
+    }, 150);
   });
 
   //dots slider
@@ -186,11 +211,12 @@ $(function () {
     let allSlide = $('.slider__slide');
     let dotsListBlock = $('.slider__dots')[0];
     allSlide.each(function (index) {
-      let html = '<li class="jsDotsSlide" id="'+index+'"><button></button></li>';
+      let html = '<li class="jsDotsSlide" id="' + index + '"><button></button></li>';
       $(dotsListBlock).append(html);
     });
     $('.slider__dots li').first().addClass('dot-active');
   }
+
   dotsSlider();
 
   $('.jsDotsSlide').click(function () {
@@ -210,8 +236,36 @@ $(function () {
         $(this).addClass('dot-active');
       }
     }
+  });
 
-    console.log(indexSlide);
+  //menu
+  $('.jsOpenMenu').click(function () {
+    if ($('.jsShowMenu').hasClass('menu-open')) {
+      $('.jsOpenMenu').removeClass('menu-active');
+      $('.jsShowMenu').removeClass('menu-open').animate({top: '-100%'}, {duration: 800, easing: 'swing', queue: false});
+    } else {
+      $('.jsOpenMenu').addClass('menu-active');
+      $('.jsShowMenu').addClass('menu-open').animate({top: 0}, {duration: 800, easing: 'swing', queue: false});
+    }
+  });
+
+  //contacts modal
+  $('.jsOpenContactsModal').click(function () {
+    if ($('.jsShowContactsModal').hasClass('contacts-open')) {
+      $('.jsOpenContactsModal').removeClass('contacts-active');
+      $('.jsShowContactsModal').removeClass('contacts-open').animate({top: '100%'}, {
+        duration: 800,
+        easing: 'swing',
+        queue: false
+      });
+    } else {
+      $('.jsOpenContactsModal').addClass('contacts-active');
+      $('.jsShowContactsModal').addClass('contacts-open').animate({top: 0}, {
+        duration: 800,
+        easing: 'swing',
+        queue: false
+      });
+    }
   });
 
 });

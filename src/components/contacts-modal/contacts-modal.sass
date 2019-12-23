@@ -1,2 +1,140 @@
 .contacts-modal
-	display: block
+  position: fixed
+  top: 100%
+  left: 0
+  display: flex
+  align-items: center
+  width: 100vw
+  height: 100vh
+  max-height: 100vh
+  margin: 0
+  padding: 0
+  background: url(../images/bg-main.png) no-repeat 50% 50%
+  overflow: hidden
+  z-index: 10
+
+  &__left
+    display: flex
+    flex-direction: column
+    width: 530px
+    margin-left: 390px
+
+    & h2
+      margin: 0 0 40px
+      color: #FFFFFF
+      font-family: 'Montserrat', sans-serif
+      font-size: 68px
+      font-weight: bold
+
+  &__mail-phone
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+
+    & a
+      color: #FFFFFF
+      font-family: 'Montserrat', sans-serif
+      font-size: 24px
+      font-weight: bold
+      text-decoration: none
+      transition: all ease .3s
+
+      &:hover
+        color: #D82A67
+        text-decoration: underline
+
+      & img
+        width: 20px
+        margin-right: 10px
+
+  &__right
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    width: 570px
+    margin-left: 155px
+
+    & label
+      position: relative
+      min-height: 90px
+      width: 100%
+      margin-bottom: 40px
+      padding: 47px 30px 19px
+      border: 1px solid #E24B6C
+
+      & span
+        position: absolute
+        top: 15px
+        left: 30px
+        color: #FFFFFF
+        font-family: 'Montserrat', sans-serif
+        font-size: 24px
+
+      & input, textarea
+        color: #E24B6C
+        font-family: 'Roboto', sans-serif
+        font-size: 18px
+        font-weight: 300
+        background: transparent
+        border: none
+        resize: none
+        outline: none
+
+        &::-webkit-input-placeholder
+          color: #E24B6C
+          font-family: 'Roboto', sans-serif
+          font-size: 18px
+          font-weight: 300
+          opacity: .5
+
+        &::-moz-placeholder
+          color: #E24B6C
+          font-family: 'Roboto', sans-serif
+          font-size: 18px
+          font-weight: 300
+          opacity: .5
+
+        &:-ms-input-placeholder
+          color: #E24B6C
+          font-family: 'Roboto', sans-serif
+          font-size: 18px
+          font-weight: 300
+          opacity: .5
+
+        &:-moz-placeholder
+          color: #E24B6C
+          font-family: 'Roboto', sans-serif
+          font-size: 18px
+          font-weight: 300
+          opacity: .5
+    & button
+      padding: 24px 74px 23px
+
+  &__soc
+    position: absolute
+    bottom: 40px
+    left: 50px
+    display: flex
+    align-items: center
+    margin: 0
+    padding: 0
+    list-style: none
+
+    & li
+      margin-right: 30px
+
+      &:last-child
+        margin-right: 0
+
+      & a
+        color: #FFFFFF
+        font-family: 'Montserrat', sans-serif
+        font-size: 18px
+        font-weight: bold
+        text-decoration: none
+        transition: all ease .3s
+
+        &:hover
+          color: #D82A67
+          text-decoration: underline

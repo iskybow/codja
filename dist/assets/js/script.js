@@ -18,13 +18,11 @@ $(function () {
   }
 
   // scroll
-  $('body section, body aside').bind('mousewheel', function (e) {
+  $('body section, body aside').bind('mousewheel DOMMouseScroll MozMousePixelScroll scroll', function (e) {
     e.preventDefault();
-
     if (e.originalEvent.wheelDelta >= 0) {
       var targetSectionPrev = $(this).prev()[0].tagName;
       if (targetSectionPrev == 'SECTION') {
-
         $('.jsShowLine').removeClass('active-line show-title current-elem');
         var _targetSectionPrev = $(this).prev();
         var targetSectionPrevId = _targetSectionPrev.attr('id');
@@ -49,7 +47,7 @@ $(function () {
         var targetSectionNextId = _targetSectionNext.attr('id');
         var _navLink = $('.jsShowLine');
         $('.jsAddDelay').css({ 'transition-delay': '0s' });
-        _navLink.each(function (index) {
+        $(_navLink).each(function (index) {
           if ($(this).attr('name') == targetSectionNextId) {
             $(this).closest('li').prevAll().addClass('active-line');
             $(this).closest('li').addClass('active-line show-title current-elem');
@@ -68,16 +66,18 @@ $(function () {
 
   //load page set section lines
   var clickFlag = false;
+
   function onEntry(entry) {
     $(entry).each(function () {
       if ($(this)[0].intersectionRatio > 0) {
+        $('section').removeClass('visible');
         $(this)[0].target.classList.add('visible');
         $('.jsShowLine').removeClass('active-line show-title current-elem');
         var targetSection = $(this)[0].target;
         var targetSectionId = targetSection.id;
         var navLink = $('.jsShowLine');
         $('.jsAddDelay').css({ 'transition-delay': '0s' });
-        navLink.each(function (index) {
+        $(navLink).each(function (index) {
           if ($(this).attr('name') == targetSectionId) {
             $(this).closest('li').prevAll().addClass('active-line');
             $(this).closest('li').addClass('active-line show-title current-elem');
@@ -172,8 +172,29 @@ $(function () {
     clickFlag = true;
     var linkHash = $(this).attr('name');
     var linkSection = $('#' + linkHash);
+    $('.jsShowLine').removeClass('active-line show-title current-elem');
+    var navLink = $('.jsShowLine');
+    $('.jsAddDelay').css({ 'transition-delay': '0s' });
+    $(navLink).each(function (index) {
+      if ($(this).attr('name') == linkHash) {
+        $(this).closest('li').prevAll().addClass('active-line');
+        $(this).closest('li').addClass('active-line show-title current-elem');
+      }
+    });
+
     var linkSectionPosition = $(linkSection)[0].offsetTop;
     $('html').animate({ scrollTop: linkSectionPosition }, { duration: 650, easing: 'swing', queue: false });
+    if ($('.jsShowMenu').hasClass('menu-open')) {
+      $('.jsOpenMenu').removeClass('menu-active');
+      $('.jsShowMenu').removeClass('menu-open').animate({ top: '-100%' }, { duration: 800, easing: 'swing', queue: false });
+    } else if ($('.jsShowContactsModal').hasClass('contacts-open')) {
+      $('.jsOpenContactsModal').removeClass('contacts-active');
+      $('.jsShowContactsModal').removeClass('contacts-open').animate({ top: '100%' }, {
+        duration: 800,
+        easing: 'swing',
+        queue: false
+      });
+    }
   });
 
   //portfolio slider
@@ -217,6 +238,7 @@ $(function () {
     });
     $('.slider__dots li').first().addClass('dot-active');
   }
+
   dotsSlider();
 
   $('.jsDotsSlide').click(function () {
@@ -236,8 +258,36 @@ $(function () {
         $(this).addClass('dot-active');
       }
     }
+  });
 
-    console.log(indexSlide);
+  //menu
+  $('.jsOpenMenu').click(function () {
+    if ($('.jsShowMenu').hasClass('menu-open')) {
+      $('.jsOpenMenu').removeClass('menu-active');
+      $('.jsShowMenu').removeClass('menu-open').animate({ top: '-100%' }, { duration: 800, easing: 'swing', queue: false });
+    } else {
+      $('.jsOpenMenu').addClass('menu-active');
+      $('.jsShowMenu').addClass('menu-open').animate({ top: 0 }, { duration: 800, easing: 'swing', queue: false });
+    }
+  });
+
+  //contacts modal
+  $('.jsOpenContactsModal').click(function () {
+    if ($('.jsShowContactsModal').hasClass('contacts-open')) {
+      $('.jsOpenContactsModal').removeClass('contacts-active');
+      $('.jsShowContactsModal').removeClass('contacts-open').animate({ top: '100%' }, {
+        duration: 800,
+        easing: 'swing',
+        queue: false
+      });
+    } else {
+      $('.jsOpenContactsModal').addClass('contacts-active');
+      $('.jsShowContactsModal').addClass('contacts-open').animate({ top: 0 }, {
+        duration: 800,
+        easing: 'swing',
+        queue: false
+      });
+    }
   });
 });
 //# sourceMappingURL=script.js.map

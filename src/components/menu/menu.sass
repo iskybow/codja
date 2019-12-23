@@ -1,6 +1,6 @@
 .menu
   position: fixed
-  top: 0
+  top: -100%
   left: 0
   display: flex
   flex-direction: column
@@ -15,7 +15,7 @@
   overflow: hidden
   z-index: 1010
 
-  & ul
+  &__nav
     display: flex
     flex-direction: column
     margin: 0
@@ -49,5 +49,27 @@
       &:hover
 
         & p
+          color: #D82A67
+          text-decoration: underline
+
+  &__soc
+    display: flex
+    align-items: center
+    margin: 90px 150px 0 0
+    padding: 0
+    list-style: none
+
+    & li
+      margin: 0 15px
+
+      & a
+        color: #FFFFFF
+        font-family: 'Montserrat', sans-serif
+        font-size: 18px
+        font-weight: bold
+        text-decoration: none
+        transition: all ease .5s
+
+        &:hover
           color: #D82A67
           text-decoration: underline

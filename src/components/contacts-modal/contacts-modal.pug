@@ -1,3 +1,31 @@
 mixin contacts-modal()
-	+b.contacts-modal
-		block
+  +b.contacts-modal.jsShowContactsModal
+    +e.left
+      +e('h2') Contact us
+      +e.mail-phone
+        +e('a')(href='tel:+97278801217')
+          +e('img')(src='assets/images/phone.svg')
+          | +972 788 012 17
+        +e('a')(href='mailto:info@codeja.net')
+          +e('img')(src='assets/images/envelope.svg')
+          | info@codeja.net
+    +e('form').right
+      +e('label')
+        +e('span') Name
+        +e('input')(type='text' name='name' autocomplete='off' placeholder='Name')
+      +e('label')
+        +e('span') E-mail
+        +e('input')(type='email' name='email' autocomplete='off' placeholder='E-mail')
+      +e('label')
+        +e('span') Message
+        +e('textarea')(name='message' autocomplete='off' placeholder='Enter your message' cols='60' rows='7')
+      +b('button')(type='submit').btn Send
+    +e('ul').soc
+      +e('li')
+        +e('a')(href='#') Instagram
+      +e('li')
+        +e('a')(href='#') Facebook
+      +e('li')
+        +e('a')(href='#') Youtube
+      +e('li')
+        +e('a')(href='#') Linkedin

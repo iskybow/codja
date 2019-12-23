@@ -14,7 +14,7 @@
   <body>
     <aside class="logo-and-nav">
       <div class="logo-and-nav__logo">
-        <button class="logo-and-nav__jsOpenMenu"><span></span><span></span><span></span>
+        <button class="jsOpenMenu"><span></span><span></span><span></span>
         </button><span class="jsAnimTo" name="main"><img src="assets/images/logo.svg" alt="" role="presentation"/></span>
       </div>
       <ul class="logo-and-nav__nav">
@@ -142,7 +142,7 @@
       <div class="contact-us__block">
         <h2>Click to action Text?
         </h2>
-        <button class="btn">Leave Details
+        <button class="btn jsOpenContactsModal">Leave Details
         </button>
       </div>
       <div class="contact-us__bottom"><span>Too personal too fast?  Let's keep on Facebook</span>
@@ -156,27 +156,63 @@
         </div>
       </div>
     </section>
-    <div class="menu">
-      <ul>
-        <li name="services"><span>01</span>
+    <div class="menu jsShowMenu">
+      <ul class="menu__nav">
+        <li class="jsAnimTo" name="services"><span>01</span>
           <p>SERVICES
           </p>
         </li>
-        <li name="portfolio"><span>02</span>
+        <li class="jsAnimTo" name="portfolio"><span>02</span>
           <p>PORTFOLIO
           </p>
         </li>
-        <li name="about-us"><span>03</span>
+        <li class="jsAnimTo" name="about-us"><span>03</span>
           <p>ABOUT US
           </p>
         </li>
-        <li name="contact-us"><span>04</span>
+        <li class="jsAnimTo" name="contact-us"><span>04</span>
           <p>CONTACT US
           </p>
         </li>
       </ul>
+      <ul class="menu__soc">
+        <li><a href="#">Instagram</a>
+        </li>
+        <li><a href="#">Facebook</a>
+        </li>
+        <li><a href="#">Youtube</a>
+        </li>
+        <li><a href="#">Linkedin</a>
+        </li>
+      </ul>
     </div>
-    <div class="contacts-modal">
+    <div class="contacts-modal jsShowContactsModal">
+      <div class="contacts-modal__left">
+        <h2>Contact us
+        </h2>
+        <div class="contacts-modal__mail-phone"><a href="tel:+97278801217"><img src="assets/images/phone.svg" alt="" role="presentation"/>+972 788 012 17</a><a href="mailto:info@codeja.net"><img src="assets/images/envelope.svg" alt="" role="presentation"/>info@codeja.net</a>
+        </div>
+      </div>
+      <form class="contacts-modal__right">
+        <label><span>Name</span><input type="text" name="name" autocomplete="off" placeholder="Name"/>
+        </label>
+        <label><span>E-mail</span><input type="email" name="email" autocomplete="off" placeholder="E-mail"/>
+        </label>
+        <label><span>Message</span><textarea name="message" autocomplete="off" placeholder="Enter your message" cols="60" rows="7"></textarea>
+        </label>
+        <button class="btn" type="submit">Send
+        </button>
+      </form>
+      <ul class="contacts-modal__soc">
+        <li><a href="#">Instagram</a>
+        </li>
+        <li><a href="#">Facebook</a>
+        </li>
+        <li><a href="#">Youtube</a>
+        </li>
+        <li><a href="#">Linkedin</a>
+        </li>
+      </ul>
     </div>
     <script src="assets/libs/jquery-3.3.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
