@@ -16,6 +16,7 @@ $(function () {
       $(this).find('.jsAddDelay').css({ 'transition-delay': delay + 's' });
     });
   }
+  lineShow();
 
   // scroll
   $('body section, body aside').bind('mousewheel DOMMouseScroll MozMousePixelScroll scroll', function (e) {
@@ -61,12 +62,8 @@ $(function () {
     }
   });
 
-  //line set delay
-  lineShow();
-
   //load page set section lines
   var clickFlag = false;
-
   function onEntry(entry) {
     $(entry).each(function () {
       if ($(this)[0].intersectionRatio > 0) {
@@ -91,13 +88,9 @@ $(function () {
       }
     });
   }
-
   var options = {};
-
   var observer = new IntersectionObserver(onEntry, options);
-
   var elements = document.querySelectorAll('section');
-
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -181,7 +174,6 @@ $(function () {
         $(this).closest('li').addClass('active-line show-title current-elem');
       }
     });
-
     var linkSectionPosition = $(linkSection)[0].offsetTop;
     $('html').animate({ scrollTop: linkSectionPosition }, { duration: 650, easing: 'swing', queue: false });
     if ($('.jsShowMenu').hasClass('menu-open')) {
@@ -238,9 +230,9 @@ $(function () {
     });
     $('.slider__dots li').first().addClass('dot-active');
   }
-
   dotsSlider();
 
+  //dots click
   $('.jsDotsSlide').click(function () {
     var indexSlide = $(this).attr('id');
     var currentIndex = $('.dot-active').attr('id');
