@@ -8,12 +8,20 @@
   padding-left: 390px
   z-index: 1
 
+  @media (max-width: 1440px)
+    justify-content: center
+    align-items: flex-start
+    padding: 0
+
   &__bg
     position: absolute
-    top: 0
+    bottom: 0
     right: 0
     height: 100%
     z-index: 2
+
+    @media (max-width: 1900px)
+      height: 60%
 
   &__block
     position: relative
@@ -22,6 +30,9 @@
     align-items: flex-start
     margin-top: 100px
     z-index: 4
+
+    @media (max-width: 992px)
+      margin: 200px 50px 0 70px
 
     & h2
       display: flex
@@ -32,6 +43,9 @@
       font-size: 68px
       font-weight: bold
       white-space: nowrap
+
+      @media (max-width: 992px)
+        font-size: 8vw
 
       & img
         height: 66px
@@ -45,6 +59,11 @@
       font-size: 18px
       font-weight: 300
       line-height: 1.7
+
+      @media (max-width: 992px)
+        width: auto
+        font-size: 30px
+        line-height: 1.4
 
       &:last-child
         margin-bottom: 0
